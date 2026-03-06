@@ -1,16 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Issue Tracker Assignment-5</title>
-
-
-
-
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- tailwind & daisy Ul -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <!--font awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--style.css  -->
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    
+    <section class="container mx-auto py-20">
+
+        <div class="container max-w-lg mx-auto ">
+            <!-- header-container -->
+            <div class="header-contain flex flex-col items-center 
+            justify-center space-y-3 bg-white shadow-lg py-5 rounded-xl ">
+                <img src="./assets/github-logo.png" alt="">
+                <h2 class="text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+                <p class="text-balance ">Sign in to manage your issues</p>
+                <!-- login  -->
+                <div class="login-form w-full max-w-xs mx-auto ">
+                    <div class="card bg-base-100  ">
+                        <fieldset class="fieldset bg-base-100   p-4 space-y-1">
+                            <legend class="fieldset-legend">Login</legend>
+                            <!-- Username -->
+                            <label class="label font-bold text-base-content">Username</label>
+                            <input id="userName" maxlength="11" minlength="11" type="text"
+                                class="input rounded-md bg-base-200" placeholder="Enter your Username" 
+                                 />
+                            <p class="text-[12px] text-green-800">Default: admin</p>
+                            <!-- Password -->
+                            <label class="label font-bold text-base-content">Password</label>
+                            <input id="input-pin" type="password" maxlength="8" minlength="8"
+                                class="input rounded-md bg-base-200" placeholder="Enter Admin Password " />
+                            <p class="text-[12px] text-green-800">Default: admin123</p>
+                            <!-- Sign In button  -->
+                            <button id="login-btn" class="btn btn-primary bg-blue-700 rounded-md mt-4 
+                                cursor-pointer active:scale-95 transition-all duration-150">Sign In</button>
+                        </fieldset>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="w-full max-w-md mx-auto ">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex-1 h-px bg-gray-300"></div>
+                        <span class="text-gray-500 text-sm font-medium">OR</span>
+                        <div class="flex-1 h-px bg-gray-300"></div>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mb-3">
+                        Demo Credentials:
+                    </p>
+                    <div class="bg-gray-100 rounded-lg p-4 text-center">
+                        <p class="font-semibold text-green-800">Username: admin</p>
+                        <p class="font-semibold text-gray-900">Password: admin123</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
 
 
 
@@ -25,6 +90,7 @@
 
 
 
-    <script src=""></script>
+    <script src="./script/login.js"></script>
 </body>
+
 </html>
