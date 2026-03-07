@@ -1,4 +1,5 @@
 
+let allIssues = [];
 
 const treesContainer = document.getElementById("treesContainer")
 const tree_details = document.getElementById("tree_details")
@@ -15,50 +16,62 @@ const modalPriority = document.getElementById("modalPriority");
 
 // button container
 
-
-
-
-
-
-
-
-
-document.getElementById("allBtnContainer").addEventListener("click", () => {
-
-    loadTrees()
-
-})
-
-
-
-
+const allBtnContainer = document.getElementById("allBtnContainer")
+const openBtnContainer = document.getElementById("openBtnContainer")
+const closedBtnContainer = document.getElementById("closedBtnContainer")
 
 
 // showLoading
-// function showLoading() {
-//     loadingSpinner.classList.remove("hidden");
-//     treesContainer.innerHTML = ''
-// }
+function showLoading() {
+    loadingSpinner.classList.remove("hidden");
+    treesContainer.innerHTML = ''
+}
 
-// hideLoading
-// function hideLoading() {
-//     loadingSpinner.classList.add("hidden")
-// }
+hideLoading
+function hideLoading() {
+    loadingSpinner.classList.add("hidden")
+}
+
+// all button container
+allBtnContainer.addEventListener("click", () => {
+    treesContainer.innerHTML = "";
+    displayTrees(allIssues);
+})
+// open btn container
+openBtnContainer.addEventListener("click", () => {
+
+    const openStatus = allIssues.filter(item => item.status === "open")
+    treesContainer.innerHTML = ""
+    displayTrees(openStatus)
+
+})
+// close btn container
+closedBtnContainer.addEventListener("click", () => {
+
+    const closeStatus = allIssues.filter(item => item.status === "closed")
+    treesContainer.innerHTML = ""
+    displayTrees(closeStatus)
+})
+
 // Tree Load
 
 async function loadTrees() {
-    // showLoading()
-
+    showLoading()
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
 
     const data = await res.json();
-    // hideLoading()
     // console.log(data);
-    displayTrees(data.data);
+    allIssues = data.data
+
+    displayTrees(allIssues);
+
+    hideLoading()
 }
 // display Trees
 
 function displayTrees(trees) {
+
+    treesContainer.innerHTML = ""
 
     trees.forEach(tree => {
         // console.log(tree);
@@ -138,11 +151,10 @@ function displayTrees(trees) {
         treesContainer.append(card)
 
     })
+
 }
 
 loadTrees()
-
-
 
 // modal
 async function openTreeModal(id) {
@@ -155,14 +167,13 @@ async function openTreeModal(id) {
 
     displayDetails(data.data);
 
-
     tree_details.showModal();
 
 }
 
 function displayDetails(issue) {
 
-    console.log(issue);
+    // console.log(issue);
 
     modalTitle.innerText = issue.title;
 
@@ -182,7 +193,7 @@ function displayDetails(issue) {
                 </span>`;
 
     // labels lop
-     const labels = issue.labels.map(label => {
+    const labels = issue.labels.map(label => {
         let color = ""
         let icon = ""
         if (label === "bug") {
@@ -211,16 +222,3 @@ function displayDetails(issue) {
 
 }
 
-
-// "id": 33,
-// "title": "Add bulk operations support",
-// "description": "Allow users to perform bulk actions like delete, update status on multiple items at once.",
-// "status": "open",
-// "labels": [
-//   "enhancement"
-// ],
-// "priority": "low",
-// "author": "bulk_barry",
-// "assignee": "",
-// "createdAt": "2024-02-02T10:00:00Z",
-// "updatedAt": "2024-02-02T10:00:00Z"
