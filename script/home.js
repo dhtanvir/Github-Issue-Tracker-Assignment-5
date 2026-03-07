@@ -32,24 +32,39 @@ function hideLoading() {
     loadingSpinner.classList.add("hidden")
 }
 
+// active Btn 
+function selectActiveBtn(activeBtn) {
+
+    const buttonContainer = [allBtnContainer, openBtnContainer, closedBtnContainer];
+
+    buttonContainer.forEach(btn => {
+        btn.classList.remove("bg-[#4A00FF]", "text-white");
+        btn.classList.add("bg-white");
+    })
+    activeBtn.classList.add("bg-[#4A00FF]", "text-white");
+    activeBtn.classList.remove("bg-white");
+
+}
+
 // all button container
 allBtnContainer.addEventListener("click", () => {
-    treesContainer.innerHTML = "";
+    selectActiveBtn(allBtnContainer);
+    // treesContainer.innerHTML = "";
     displayTrees(allIssues);
 })
 // open btn container
 openBtnContainer.addEventListener("click", () => {
-
-    const openStatus = allIssues.filter(item => item.status === "open")
-    treesContainer.innerHTML = ""
-    displayTrees(openStatus)
+    selectActiveBtn(openBtnContainer);
+    const openStatus = allIssues.filter(item => item.status === "open");
+    // treesContainer.innerHTML = "";
+    displayTrees(openStatus);
 
 })
 // close btn container
 closedBtnContainer.addEventListener("click", () => {
-
-    const closeStatus = allIssues.filter(item => item.status === "closed")
-    treesContainer.innerHTML = ""
+    selectActiveBtn(closedBtnContainer);
+    const closeStatus = allIssues.filter(item => item.status === "closed");
+    treesContainer.innerHTML = "";
     displayTrees(closeStatus)
 })
 
