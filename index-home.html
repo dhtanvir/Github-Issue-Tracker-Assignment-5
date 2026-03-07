@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body class="bg-slate-100">
     <!-- header section -->
     <header>
         <div class="navbar flex flex-wrap items-center justify-between bg-base-100 shadow-sm px-10 space-y-3">
@@ -51,8 +51,103 @@
         </div>
     </header>
     <main>
-        <section>
-            
+        <section class="container mx-auto py-10 ">
+            <!-- button section -->
+            <div class="bg-white rounded-lg shadow-sm py-4 px-5">
+                <div id="button-container" class="but-container flex gap-2">
+                    <button id="allBtnContainer" class="btn  bg-[#4A00FF] text-white shadow-md  ">All</button>
+                    <button id="openBtnContainer" class="btn bg-white shadow-md  ">Open</button>
+                    <button id="closedBtnContainer" class="btn bg-white shadow-md  ">Closed</button>
+                </div>
+            </div>
+            <!-- container section -->
+            <div class="all-container bg-gray-200 rounded-lg  my-5 ">
+                <div class="count-container bg-white shadow-sm flex items-center justify-between px-5">
+                    <div class="count-item flex items-center gap-5 py-4">
+                        <img src="./assets/Aperture.png" alt="">
+                        <div>
+                            <h6 class="text-[#1F2937] text-[20px]">50 Issues</h6>
+                            <p class="text-[#64748B] text-[16px]">Track and manage your project issues</p>
+                        </div>
+                    </div>
+                    <div class="count-item-2 ">
+                        <ul class="flex items-center justify-between gap-5">
+                            <li><i class="fa-solid fa-circle text-green-600"></i> Open</li>
+                            <li> <i class="fa-solid fa-circle text-purple-600"></i>Close</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- categories -->
+                <div class="card-container py-5">
+
+                    <div class=" ">
+                        <!--trees will rendered  -->
+                        <div id="treesContainer" class="card-item grid  
+                        grid-cols-1  md:grid-cols-4 gap-4 px-4">
+                            <!-- card item -->
+
+
+                            <!-- card item -->
+
+                            <!-- loading spinner -->
+                            <div id="loadingSpinner" class="h-[60vh] flex hidden 
+                        items-center justify-center ">
+                                <span class="loading loading-spinner text-success"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Open the modal using ID.showModal() method -->
+                <!-- <button class="btn" onclick="tree_details.showModal()">open modal</button> -->
+                <dialog id="tree_details" class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box bg-white rounded-xl shadow-xl w-[600px] p-6 relative space-y-5">
+                        <!-- Close Button -->
+                        <button class="absolute right-5 top-4 text-xl cursor-pointer text-gray-500 hover:text-black"
+                            onclick="document.getElementById('tree_details').close()">✕</button>
+
+                        <!--  -->
+                        <h2 id="modalTitle" class="text-2xl font-semibold"></h2>
+
+                        <div class="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                            <span id="modalStatus"></span>
+                            <span id="modalAuthor"></span>
+                            <span id="modalDate"></span>
+                        </div>
+
+                        <div id="modalLabels" class="flex gap-2 mt-3"></div>
+
+                        <p id="modalDescription" class="mt-4 text-gray-600"></p>
+
+                        <div class="flex justify-between items-center bg-gray-100 px-5 py-4">
+
+                            <div>
+                                <p class="text-sm text-gray-500">Assignee:</p>
+                                <p id="modalAssignee" class="font-semibold"></p>
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-gray-500">Priority:</p>
+                                <span id="modalPriority"
+                                    class="bg-red-500 text-white text-xs px-3 py-1 rounded-full"></span>
+                            </div>
+                            <!--  -->
+
+
+                            <div class="modal-action">
+                                <form method="dialog">
+                                    <!-- if there is a button in form, it will close the modal -->
+                                    <button class="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </dialog>
+
+
         </section>
     </main>
 
