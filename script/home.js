@@ -1,8 +1,10 @@
 
 let allIssues = [];
 
+
 const treesContainer = document.getElementById("treesContainer")
 const tree_details = document.getElementById("tree_details")
+const loadingSpinner = document.getElementById("loadingSpinner");
 
 // modal
 const modalTitle = document.getElementById("modalTitle")
@@ -15,10 +17,11 @@ const modalAssignee = document.getElementById("modalAssignee");
 const modalPriority = document.getElementById("modalPriority");
 
 // button container
-
 const allBtnContainer = document.getElementById("allBtnContainer")
 const openBtnContainer = document.getElementById("openBtnContainer")
 const closedBtnContainer = document.getElementById("closedBtnContainer")
+
+
 
 
 // showLoading
@@ -27,10 +30,20 @@ function showLoading() {
     treesContainer.innerHTML = ''
 }
 
-hideLoading
+// hideLoading
 function hideLoading() {
     loadingSpinner.classList.add("hidden")
 }
+
+// count 
+function updateCount(num){
+    const count = document.getElementById("count");
+    if(count){
+        count.innerText= `${num} Issues `
+    }
+}
+
+
 
 // active Btn 
 function selectActiveBtn(activeBtn) {
@@ -48,7 +61,9 @@ function selectActiveBtn(activeBtn) {
 
 // all button container
 allBtnContainer.addEventListener("click", () => {
+
     selectActiveBtn(allBtnContainer);
+    updateCount(allIssues.length)
     // treesContainer.innerHTML = "";
     displayTrees(allIssues);
 })
@@ -56,6 +71,7 @@ allBtnContainer.addEventListener("click", () => {
 openBtnContainer.addEventListener("click", () => {
     selectActiveBtn(openBtnContainer);
     const openStatus = allIssues.filter(item => item.status === "open");
+    updateCount(openStatus.length)
     // treesContainer.innerHTML = "";
     displayTrees(openStatus);
 
@@ -64,6 +80,7 @@ openBtnContainer.addEventListener("click", () => {
 closedBtnContainer.addEventListener("click", () => {
     selectActiveBtn(closedBtnContainer);
     const closeStatus = allIssues.filter(item => item.status === "closed");
+    updateCount(closeStatus.length)
     treesContainer.innerHTML = "";
     displayTrees(closeStatus)
 })
@@ -78,6 +95,7 @@ async function loadTrees() {
     // console.log(data);
     allIssues = data.data
 
+    updateCount(allIssues.length)
     displayTrees(allIssues);
 
     hideLoading()
@@ -236,4 +254,34 @@ function displayDetails(issue) {
 
 
 }
+
+// =====================Search======
+// document.getElementById("btn-search")
+//     .addEventListener("click", () => {
+        
+//         const inputSearch = document.getElementById("input-search");
+
+//         const searchValue = inputSearch.value.trim().toLowerCase();
+
+//         // console.log(searchValue);
+
+//         fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications")
+//             .then(res => res.json())
+//             .then(data => {
+
+//                 const allWords = data.data;
+//                 // console.log(allWords);
+
+//                 const filterWords = allWords.
+//                     filter((word) => word.word.toLowerCase().includes(searchValue));
+//                 // console.log(filterWords);
+
+//                 displayLevelWord(filterWords)
+
+//             })
+
+//     })
+
+
+
 
