@@ -13,8 +13,8 @@ document.getElementById("login-btn")
         // console.log(inputPinValue);
         if (userNameValue === 'admin' && inputPinValue === 'admin123') {
             alert("successfully logging")
-            window.location.assign("/index-home.html")
-        }else{
+            window.location.assign("/home.html")
+        } else {
             return alert('login failed')
         }
 
