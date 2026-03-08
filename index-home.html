@@ -30,34 +30,35 @@
                 <img src="./assets/github-logo.png" class="w-6" alt="">
                 <a class=" text-xl font-semibold">GitHub Issues Tracker</a>
             </div>
-            <div class="flex gap-2">
-                <div class="join">
-                    <div>
-                        <label class="input">
-                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
-                                    stroke="currentColor">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.3-4.3"></path>
-                                </g>
-                            </svg>
-                            <input type="search" required placeholder="Search..." />
-                        </label>
+            <!-- search -->
+            <div class="flex gap-3">
+                <!-- search -->
+                <div class="flex justify-center">
+                    <div class="join">
+                        <div>
+                            <label class="input validator join-item">
+
+                                <input id="input-search" type="text" placeholder="search...." required />
+                            </label>
+
+                        </div>
+                        <button id="btn-search" class="btn btn-primary join-item">search</button>
                     </div>
-                    <button class="btn btn-neutral join-item">Search</button>
                 </div>
-                <button class="btn btn-primary "><i class="fa-solid fa-plus"></i> New Issue</button>
+                <!--  -->
+                <div>
+                    <button class="btn btn-primary "><i class="fa-solid fa-plus"></i> New Issue</button>
+                </div>
             </div>
-        </div>
     </header>
     <main>
         <section class="container mx-auto py-10 ">
             <!-- button section -->
             <div class="bg-white rounded-lg shadow-sm py-4 px-5">
-                <div id="button-container" class="but-container flex gap-2">
-                    <button id="allBtnContainer" class="btn  bg-[#4A00FF] text-white shadow-md  ">All</button>
-                    <button id="openBtnContainer" class="btn bg-white shadow-md  ">Open</button>
-                    <button id="closedBtnContainer" class="btn bg-white shadow-md  ">Closed</button>
+                <div id="button-container" class="but-container flex gap-3">
+                    <button id="allBtnContainer" class="btn  bg-[#4A00FF] text-white shadow-md  px-10">All</button>
+                    <button id="openBtnContainer" class="btn bg-white shadow-md px-10  ">Open</button>
+                    <button id="closedBtnContainer" class="btn bg-white shadow-md px-10 ">Closed</button>
                 </div>
             </div>
             <!-- container section -->
@@ -146,7 +147,7 @@
                         </div>
                     </div>
                 </dialog>
-
+            </div>
 
         </section>
     </main>

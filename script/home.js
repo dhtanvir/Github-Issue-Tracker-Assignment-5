@@ -1,7 +1,6 @@
 
 let allIssues = [];
 
-
 const treesContainer = document.getElementById("treesContainer")
 const tree_details = document.getElementById("tree_details")
 const loadingSpinner = document.getElementById("loadingSpinner");
@@ -22,8 +21,6 @@ const openBtnContainer = document.getElementById("openBtnContainer")
 const closedBtnContainer = document.getElementById("closedBtnContainer")
 
 
-
-
 // showLoading
 function showLoading() {
     loadingSpinner.classList.remove("hidden");
@@ -36,14 +33,12 @@ function hideLoading() {
 }
 
 // count 
-function updateCount(num){
+function updateCount(num) {
     const count = document.getElementById("count");
-    if(count){
-        count.innerText= `${num} Issues `
+    if (count) {
+        count.innerText = `${num} Issues `
     }
 }
-
-
 
 // active Btn 
 function selectActiveBtn(activeBtn) {
@@ -256,31 +251,33 @@ function displayDetails(issue) {
 }
 
 // =====================Search======
-// document.getElementById("btn-search")
-//     .addEventListener("click", () => {
-        
-//         const inputSearch = document.getElementById("input-search");
+document.getElementById("btn-search")
+    .addEventListener("click", () => {
 
-//         const searchValue = inputSearch.value.trim().toLowerCase();
+        const inputSearch = document.getElementById("input-search");
 
-//         // console.log(searchValue);
+        const searchValue = inputSearch.value.trim().toLowerCase();
 
-//         fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications")
-//             .then(res => res.json())
-//             .then(data => {
+        if (searchValue == "") {
+            displayTrees(allIssues);
+            updateCount(allIssues.length);
+            return;
+        }
+        showLoading()
+        // console.log(searchValue);
 
-//                 const allWords = data.data;
-//                 // console.log(allWords);
+        fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+            .then(res => res.json())
+            .then(data => {
+                const searchResult = data.data;
+                // console.log(searchResult);
+                displayTrees(searchResult);
+                updateCount(searchResult.length);
 
-//                 const filterWords = allWords.
-//                     filter((word) => word.word.toLowerCase().includes(searchValue));
-//                 // console.log(filterWords);
+                hideLoading()
+            })
 
-//                 displayLevelWord(filterWords)
-
-//             })
-
-//     })
+    });
 
 
 
